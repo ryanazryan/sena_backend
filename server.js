@@ -12,7 +12,7 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-app.use(cors());
+app.use(cors())
 app.use(express.json());
 
 function cleanFeedback(text, maxChar = 1500) {
