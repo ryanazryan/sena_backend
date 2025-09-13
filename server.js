@@ -1,14 +1,13 @@
 import express from "express";
 import cors from "cors";
-// Kode AI Anda dipertahankan seperti semula
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-// Kode AI Anda dipertahankan seperti semula
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
