@@ -60,9 +60,11 @@
     "next": "^15.5.2",
     "vite": "6.3.5"
   },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "start-api": "node server.js"
-  }
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "start": "node server.js",
+  "start-api": "node server.js"
+}
+
 }
