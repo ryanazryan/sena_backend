@@ -2,17 +2,19 @@ import express from "express";
 import cors from "cors";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-});
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://tvp6l8-2222.csb.app"],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-app.use(cors())
 app.use(express.json());
 
 function cleanFeedback(text, maxChar = 1500) {
@@ -319,10 +321,8 @@ app.post("/feedback", async (req, res) => {
       error: "Gagal membuat feedback AI",
       details: err.message,
     });
+
+    const PORT = process.env.PORT || 2222;
+    app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
   }
-});
-
-
-app.listen(port, () => {
-  console.log(`Server API berjalan di http://localhost:${port}`);
 });
